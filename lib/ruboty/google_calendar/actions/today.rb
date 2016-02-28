@@ -12,8 +12,9 @@ module Ruboty
         private
 
         def today
+          ids = ENV['GOOGLE_CALENDAR_IDS'].split(',')
           client = Ruboty::GoogleCalendar::CalendarClient.new ENV
-          client.search('primary').map(&:summary).join("\n")
+          ids.flat_map{|id| client.search(id)}.map(&:summary).join("\n")
         end
 
       end

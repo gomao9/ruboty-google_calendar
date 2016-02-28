@@ -11,6 +11,7 @@ module Ruboty
       env :GOOGLE_CALENDAR_SCOPE, "scope"
       env :GOOGLE_CALENDAR_REFRESH_TOKEN, "refresh token"
       env :GOOGLE_CALENDAR_ACCESS_TOKEN, "access token"
+      env :GOOGLE_CALENDAR_IDS, "calendar ids to refer(comma separated)"
 
       def today(message)
         Ruboty::GoogleCalendar::Actions::Today.new(message).call
