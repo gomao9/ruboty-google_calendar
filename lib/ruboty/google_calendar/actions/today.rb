@@ -9,9 +9,11 @@ module Ruboty
         end
 
         private
+
         def today
-          # TODO: main logic
+          "today"
         end
+
       end
     end
   end
