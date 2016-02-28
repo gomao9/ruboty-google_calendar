@@ -10,5 +10,5 @@ require "ruboty/google_calendar"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start
+require "pry"
+pry
