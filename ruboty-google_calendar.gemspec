@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["gomaoq@gmail.com"]
 
   spec.summary       = "ruboty plugin for Google Calendar"
-  spec.homepage      = "github.com/gomao9/ruboty-google_calendar"
+  spec.homepage      = "https://github.com/gomao9/ruboty-google_calendar"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
