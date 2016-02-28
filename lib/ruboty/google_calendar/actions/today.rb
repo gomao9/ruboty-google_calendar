@@ -1,3 +1,4 @@
+require 'ruboty'
 module Ruboty
   module GoogleCalendar
     module Actions
@@ -11,7 +12,8 @@ module Ruboty
         private
 
         def today
-          "today"
+          client = Ruboty::GoogleCalendar::CalendarClient.new ENV
+          client.search('primary').map(&:summary).join("\n")
         end
 
       end

@@ -1,4 +1,5 @@
 require "ruboty/google_calendar/actions/today"
+require "ruboty/google_calendar/calendar_client"
 
 module Ruboty
   module Handlers
