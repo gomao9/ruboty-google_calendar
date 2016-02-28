@@ -1,0 +1,38 @@
+user_name "gomao9"
+
+gem_class_name "GoogleCalendar"
+gem_name "google_calendar"
+
+description "Replies events in GoogleCalendar"
+
+
+env do |e|
+  e.name "GOOGLE_CALENDAR_CLIENT_ID"
+  e.description "client id"
+end
+
+env do |e|
+  e.name "GOOGLE_CALENDAR_CLIENT_SECRET"
+  e.description "client secret"
+end
+
+env do |e|
+  e.name "GOOGLE_CALENDAR_SCOPE"
+  e.description "scope"
+end
+
+env do |e|
+  e.name "GOOGLE_CALENDAR_REFRESH_TOKEN"
+  e.description "refresh token"
+end
+
+env do |e|
+  e.name "GOOGLE_CALENDAR_ACCESS_TOKEN"
+  e.description "access token"
+end
+
+command do |c|
+  c.name "today"
+  c.pattern "今日の予定\\z"
+  c.description "Replies today's events"
+end
