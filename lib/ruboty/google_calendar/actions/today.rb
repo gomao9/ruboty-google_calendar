@@ -24,7 +24,7 @@ module Ruboty::GoogleCalendar::Actions
       client = Ruboty::GoogleCalendar::CalendarClient.new ENV
       events = ids.keys.flat_map{|id| client.search(id, day).map{|event| [id, event]}}
 
-      events.sort_by{|_, event| event.start.date_time.to_i}.group_by{|_, event| event.id}.map do |id, events|
+      events.sort_by{|_, event| [event.start.date_time.to_i, event.end.date_time.to_i] }.group_by{|_, event| event.id}.map do |id, events|
         event = events.first[1]
         time = if event.start.date_time
                  time_format(event.start.date_time, event.end.date_time)
