@@ -4,6 +4,7 @@ module Ruboty::GoogleCalendar::Actions
   class Today < Ruboty::Actions::Base
     HHMM_FORMAT = "%H:%M"
     ALLDAY      = "終日"
+    NO_SCHEDULE = "今日の予定はありません"
     def call
       message.reply(today)
     rescue => e
@@ -24,7 +25,7 @@ module Ruboty::GoogleCalendar::Actions
       client = Ruboty::GoogleCalendar::CalendarClient.new ENV
       events = ids.keys.flat_map{|id| client.search(id, day).map{|event| [id, event]}}
 
-      events.sort_by{|_, event| [event.start.date_time.to_i, event.end.date_time.to_i] }.group_by{|_, event| event.id}.map do |id, events|
+      text = events.sort_by{|_, event| [event.start.date_time.to_i, event.end.date_time.to_i] }.group_by{|_, event| event.id}.map do |id, events|
         event = events.first[1]
         time = if event.start.date_time
                  time_format(event.start.date_time, event.end.date_time)
@@ -35,6 +36,8 @@ module Ruboty::GoogleCalendar::Actions
 
         sprintf("%s[%s]:%s", time, atendees, event.summary)
       end.join("\n")
+
+      text.empty? ? NO_SCHEDULE : text
     end
 
     def time_format st, ed
